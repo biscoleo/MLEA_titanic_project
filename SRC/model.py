@@ -33,7 +33,7 @@ def xgboostmodel1 (df):
 
 
     # split the data into our outcome variable (dependent variable), and our input variables (independent variables)
-    print(df.head())
+    # print(df.head())
     # survival data
     survival_outcome = df['Survived']
     # all other variables except for our outcome (in a later model)
