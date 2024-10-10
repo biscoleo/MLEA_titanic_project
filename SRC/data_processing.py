@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("./Data/test.csv")
-print(df)
+def print_dataframe():
+    df = pd.read_csv("./Data/test.csv")
+    print(df)
