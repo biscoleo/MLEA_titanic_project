@@ -8,6 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import tree
 from model_eval import Random_forest_eval
+from model_eval import XG_boost_eval
 from data_processing import df
 import matplotlib.pyplot as plt
 import warnings
@@ -51,6 +52,7 @@ def xgboostmodel1 (df):
     # collect model predictions so we can compare to the actual data to test for accuracy
     survival_predictions = xgbmodel1.predict(input_test)
 
+    XG_boost_eval(survival_test,survival_predictions)
     # return these so we can test for accuracy in model_eval.py functions
     return survival_test, survival_predictions
 
