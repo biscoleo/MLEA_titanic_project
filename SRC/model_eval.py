@@ -6,7 +6,7 @@ def Random_forest_eval(test_values,predicted_values):
     classification_rep = classification_report(test_values, predicted_values)
 
     # Print the results
-    print(f"Accuracy for Random Forest: {accuracy:.2f}")
+    print(f"Accuracy for Random Forest: {accuracy*100}")
     # print("\nClassification Report:\n", classification_rep)
 
 
