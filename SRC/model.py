@@ -9,7 +9,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import tree
 from model_eval import Random_forest_eval
 from model_eval import XG_boost_eval
-from data_processing import df
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
@@ -60,7 +59,7 @@ def xgboostmodel1 (df):
 
 
 
-def RandomForest():
+def RandomForest(df):
     x = df[['Pclass','Sex','Age','SibSp','Parch','Fare']]
     y = df['Survived']
 
@@ -83,8 +82,8 @@ def RandomForest():
 
     Random_forest_eval(y_test,y_pred)
 
-if __name__ == "__main__":
-    titanic_data_df = df
-    RandomForest()
-    xgboostmodel1(titanic_data_df)
+# if __name__ == "__main__":
+#     titanic_data_df = df
+#     RandomForest(titanic_data_df)
+#     xgboostmodel1(titanic_data_df)
 
