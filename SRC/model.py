@@ -7,8 +7,7 @@ from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import tree
-from SRC.model_eval import Random_forest_eval
-from SRC.model_eval import XG_boost_eval
+from SRC.model_eval import Random_forest_eval, XG_boost_eval
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
@@ -16,7 +15,12 @@ warnings.filterwarnings('ignore')
 
 def xgboostmodel1 (df):
     """
-    This function runs an xg boost model to predict the survival outcome based on input variables
+    This function runs an xg boost (extreme gradient boosting) model to predict the survival outcome based on 
+    input variables in this titanic dataset. It calls XG_boost_eval from model_eval to perform an accuracy test.
+
+    Argument:
+    ---------
+    df(dataframe): a pandas dataframe with titanic data
     """
 
     # label encoding for different data types required by xgboost:
@@ -51,9 +55,8 @@ def xgboostmodel1 (df):
     # collect model predictions so we can compare to the actual data to test for accuracy
     survival_predictions = xgbmodel1.predict(input_test)
 
+    # test for accuracy by calling XG Boost eval function from model_eval.py:
     XG_boost_eval(survival_test,survival_predictions)
-    # return these so we can test for accuracy in model_eval.py functions
-    return survival_test, survival_predictions
 
 
 
