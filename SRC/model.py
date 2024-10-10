@@ -7,8 +7,8 @@ from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import tree
-from model_eval import Random_forest_eval
-from model_eval import XG_boost_eval
+from SRC.model_eval import Random_forest_eval
+from SRC.model_eval import XG_boost_eval
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')

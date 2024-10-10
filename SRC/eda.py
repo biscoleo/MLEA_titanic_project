@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt 
 import seaborn as sns
-from data_processing import df
+from SRC.data_processing import df
 
 
 def eda_sex_survived (df):
