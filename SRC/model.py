@@ -7,7 +7,8 @@ from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import tree
-from SRC.model_eval import Random_forest_eval, XG_boost_eval
+from sklearn.linear_model import LogisticRegression
+from SRC.model_eval import Random_forest_eval, XG_boost_eval, logistic_regression_eval
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
@@ -59,9 +60,6 @@ def xgboostmodel1 (df):
     XG_boost_eval(survival_test,survival_predictions)
 
 
-
-
-
 def RandomForest(df):
     x = df[['Pclass','Sex','Age','SibSp','Parch','Fare']]
     y = df['Survived']
@@ -84,6 +82,29 @@ def RandomForest(df):
     # print(y_pred)
 
     Random_forest_eval(y_test,y_pred)
+
+
+def logistic_regression(df):
+    label = LabelEncoder()
+    df = df.copy()
+
+    df['Sex'] = label.fit_transform(df['Sex'])
+    df['Embarked'] = label.fit_transform(df['Embarked'])
+    df = df.drop('Name', axis=1)
+    df = df.drop('PassengerId', axis=1)
+    df = df.drop('Ticket', axis=1)
+
+    X = df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']]
+    y = df['Survived']
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=15)
+
+    logreg = LogisticRegression(max_iter=200, random_state=42)
+    logreg.fit(X_train, y_train)
+
+    y_pred = logreg.predict(X_test)
+    logistic_regression_eval(y_test, y_pred)
+
 
 # if __name__ == "__main__":
 #     titanic_data_df = df
